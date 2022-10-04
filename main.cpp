@@ -18,6 +18,9 @@ void CrackSha256() {
 	int n_threads = 0;
 	std::cin >> n_threads;
 
+	if (n_threads == 0)
+		throw std::runtime_error("You should enter threads more then 0.");
+
 	auto cracker = HashCracker<Sha256Hasher>(5);
 	cracker.Crack(hashes, n_threads);
 
@@ -40,6 +43,9 @@ void CrackMD5() {
 	int n_threads = 0;
 	std::cin >> n_threads;
 
+	if (n_threads == 0)
+		throw std::runtime_error("You should enter threads more then 0.");
+
 	auto cracker = HashCracker<MD5Hasher>(5);
 	cracker.Crack(hashes, n_threads);
 
@@ -50,7 +56,12 @@ void CrackMD5() {
 }
 
 int main() {
-	CrackSha256();
-	CrackMD5();
+	try {
+		CrackSha256();
+		CrackMD5();
+	}
+	catch (std::runtime_error ex) {
+		std::cout << "Error occured: " << ex.what() << std::endl;
+	}
 	return 0;
 }
