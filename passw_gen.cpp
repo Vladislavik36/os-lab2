@@ -3,6 +3,7 @@
 std::string PasswordGenerator::Generate(int idx)
 {
 	std::string out;
+	auto symbols = GetSymbols();
 	for (int i = 0; i < max_c; i++)
 	{
 		out += symbols[idx % symbols.size()];

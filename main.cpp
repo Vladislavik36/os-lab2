@@ -18,7 +18,7 @@ void CrackSha256() {
 	int n_threads = 0;
 	std::cin >> n_threads;
 
-	HashCracker<Sha256Hasher> cracker;
+	auto cracker = HashCracker<Sha256Hasher>(5);
 	cracker.Crack(hashes, n_threads);
 
 	auto end_t = std::chrono::steady_clock::now();
@@ -40,7 +40,7 @@ void CrackMD5() {
 	int n_threads = 0;
 	std::cin >> n_threads;
 
-	HashCracker<MD5Hasher> cracker;
+	auto cracker = HashCracker<MD5Hasher>(5);
 	cracker.Crack(hashes, n_threads);
 
 	auto end_t = std::chrono::steady_clock::now();
